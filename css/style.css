@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ body {
+   background-image: url("images/background.jpeg");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+ }
+ .topnav {
+     background-color: #333;
+     overflow: hidden;
+ }
+   /* Style the links inside the navigation bar */
+ .topnav a {
+     float: left;
+     color: #f2f2f2;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     font-size: 17px;
+ }
+  /* Change the color of links on hover */
+ .topnav a:hover {
+     background-color: #ddd;
+     color: black;
+ }
+ /* Add a color to the active/current link */
+ .topnav a.active {
+     background-color: #ff3503;
+     color: white;
+ }
+ .datetime{
+   align-items: center;
+   color: rgb(252, 6, 6);
+   background: #10101E;
+   font-family: "Segoe UI", sans-serif;
+   width: 340px;
+   padding: 15px 10px;
+   border: 3px solid #0a0a0a;
+   border-radius: 5px;
+ }
+ .datetime:hover{
+   background: #fdfcfb;
+ }
+ .date{
+   font-size: 20px;
+   font-weight: 600;
+   text-align: center;
+   letter-spacing: 3px;
+ }
+ .time{
+   font-size: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .time span:not(:last-child){
+   position: relative;
+   margin: 0 6px;
+   font-weight: 600;
+   text-align: center;
+   letter-spacing: 3px;
+ }
+ .time span:last-child{
+   background: #f8f5f5;
+   font-size: 30px;
+   font-weight: 600;
+   text-transform: uppercase;
+   margin-top: 10px;
+   padding: 0 5px;
+   border-radius: 3px;
+ }
+ img {
+   border: 1px solid rgb(7, 7, 7); /* Gray border */
+   width: 250px; /* Set a small width */
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+ }
+ .center
+ {
+  text-align: center;
+  list-style-position: inside;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+ }
+ ol.center li
+ {
+  text-align: auto;
+  margin-left: auto;
+ }

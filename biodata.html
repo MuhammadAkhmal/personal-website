@@ -1,0 +1,275 @@
+<html>
+    <head>
+        <title>BIODATA</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="images/logo.jpg">
+    </head>
+    <style>
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+body {
+  background-image: url("images/background.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+  /* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+}
+ /* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #ff3503;
+    color: white;
+}
+.datetime{
+  align-items: center;
+  color: rgb(252, 6, 6);
+  background: #10101E;
+  font-family: "Segoe UI", sans-serif;
+  width: 340px;
+  padding: 15px 10px;
+  border: 3px solid #0a0a0a;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.datetime:hover{
+  background: #fdfcfb;
+}
+.date{
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 3px;
+}
+.time{
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time span:not(:last-child){
+  position: relative;
+  margin: 0 6px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 3px;
+}
+.time span:last-child{
+  background: #f8f5f5;
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 10px;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+img {
+  border: 1px solid rgb(7, 0, 0); 
+  border-radius: 4px;  
+  width: 200px; 
+}
+ /* Add a hover effect */
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(5, 5, 5, 0.5);
+}
+table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+td {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #5da2f1;
+  text-align: center;
+}
+th {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #ddd;
+}
+th, td {
+  padding: 20px;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.back-to-top {
+    float: right;
+    width: 80px;
+    
+}
+
+    </style>
+
+<body background="images/background.jpeg" onload="initClock()">
+    <h1><center>Personal Information</center></h1>
+    <div class="topnav">
+		<a href="index.html">Home</a>
+        <a class="active" href="biodata.html">Biodata</a>
+		<a href="education.html">Education</a>
+		<a href="gallery.html">Gallery</a>
+		<a href="skills.html">Skills</a>
+		<a href="contact.html">Contact</a>
+	  </div>
+
+      <br>
+
+      <div class="datetime">
+        <div class="date">
+          <span id="dayname">Day</span>,
+          <span id="month">Month</span>
+          <span id="daynum">00</span>,
+          <span id="year">Year</span>
+        </div>
+        <div class="time">
+          <span id="hour">00</span>:
+          <span id="minutes">00</span>:
+          <span id="seconds">00</span>
+          <span id="period">AM</span>
+        </div>
+      </div>
+      <!--digital clock end-->
+  
+      <script type="text/javascript">
+      function updateClock(){
+        var now = new Date();
+        var dname = now.getDay(),
+            mo = now.getMonth(),
+            dnum = now.getDate(),
+            yr = now.getFullYear(),
+            hou = now.getHours(),
+            min = now.getMinutes(),
+            sec = now.getSeconds(),
+            pe = "AM";
+  
+            if(hou >= 12){
+              pe = "PM";
+            }
+            if(hou == 0){
+              hou = 12;
+            }
+            if(hou > 12){
+              hou = hou - 12;
+            }
+  
+            Number.prototype.pad = function(digits){
+              for(var n = this.toString(); n.length < digits; n = 0 + n);
+              return n;
+            }
+  
+            var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+            var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+            var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+            for(var i = 0; i < ids.length; i++)
+            document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+      }
+  
+      function initClock(){
+        updateClock();
+        window.setInterval("updateClock()", 1);
+      }
+      </script>
+
+<br>
+
+<!--Inserting thumbnail image-->    
+    <center>
+    <a target="_blank" href="images/mal.jpeg">
+      <img src="images/mal.jpeg" alt="Profile Picture">
+    </a>
+    </center>
+
+<br>
+
+    <table class="center">
+<tr>
+    <th>FULL NAME</th>
+    <td>Muhammad Akhmal Bin Muhamad Noor Azizan</td>
+</tr>
+<tr ul type="circle">
+    <th>NICK NAME</th>
+    <td><li>Kemal</li>
+    <li>Mal</li></td>
+</ul>
+</tr>
+<tr>
+    <th>PLACE OF BIRTH</th>
+    <td>Hospital Kuala Lumpur</td>
+</tr>
+<tr>
+    <th>DATE OF BIRTH</th>
+    <td>28/10/2002</td>
+</tr>
+<tr>
+    <th>HEIGHT</th>
+    <td>169<abr title="centimeter">cm</abr></td>
+</tr>
+<tr>
+    <th>WEIGHT</th>
+    <td>65<abr title="kilogram">kg</abr></td>
+</tr>
+<tr>
+    <th>FATHER NAME</th>
+    <td>Muhamad Noor Azizan Bin Ismail</td>
+</tr>
+<tr>
+    <th>MOTHER NAME</th>
+    <td>Noor Azlina Binti Abd Khalip</td>
+</tr>
+<tr>
+    <th>RACE</th>
+    <td>Malay</td>
+</tr>
+<tr>
+    <th>STATUS</th>
+    <td><i>Single</i></td>
+</tr>
+<tr>
+    <th>ADDRESS</th>
+    <td>Jalan Pandan Indah 1/19, Pandan Indah, 55100, Ampang, Kuala Lumpur.</td>
+</tr>
+<tr>
+    <th>FAV MUSIC</th>
+    <td><audio controls >
+        <source src="audio/Ernie Zakri - Gundah.mp3" type="audio/mpeg">
+        <source src="audio/Ernie Zakri - Gundah.mp3" type="audio/ogg">
+    </audio></td>
+</tr>
+<tr>
+    <th>FAV SINGERS</th>
+    <td><a href="https://www.instagram.com/erniezakri/" target="_blank"><img src="images/ernie zakri.jpg" width="50px"></img></a>
+    <a href="https://www.instagram.com/afgan__/" target="_blank"><img src="images/afgan.jpg" width="50px"></img></a></td>
+</tr>
+<tr>
+    <th> FAV MOVIE</th>
+    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/5MwW1NAsnR8" title="Trailer Maleficent 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen alt="TRAILER MALEFICENT 2"></iframe></td>
+    <!--Your browser does not support the video element.-->
+</tr>
+    </table>
+<br>
+<br>
+<a href="biodata.html"><img src="images/back-to-top-icon.jpg" width="80px" class="back-to-top"></a>
+<br>
+    </body>
+</html>

@@ -1,0 +1,281 @@
+<html>
+    <head>
+        <title>GALLERY</title>
+        <meta charset="utf-8">
+        <link rel="icon" type="image/x-icon" href="images/logo.jpg">
+    </head>
+    <style>
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+body {
+  background-image: url("images/background.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+  /* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+}
+ /* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #ff3503;
+    color: white;
+}
+.datetime{
+  align-items: center;
+  color: rgb(252, 6, 6);
+  background: #10101E;
+  font-family: "Segoe UI", sans-serif;
+  width: 340px;
+  padding: 15px 10px;
+  border: 3px solid #0a0a0a;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.datetime:hover{
+  background: #fdfcfb;
+}
+.date{
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 3px;
+}
+.time{
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time span:not(:last-child){
+  position: relative;
+  margin: 0 6px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 3px;
+}
+.time span:last-child{
+  background: #f8f5f5;
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 10px;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+table, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+td {
+  background-color: #f8f9fa;
+}
+td {
+  padding: 20px;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+img:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.3s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.back-to-top {
+    float: right;
+    border: 1px solid rgb(7, 0, 0); 
+    border-radius: 4px;  
+}
+
+    </style>
+
+<body background="images/background.jpeg" onload="initClock()"></body>
+    <h1><center>COLLECTION OF PHOTOS & VIDEOS</center></h1>
+    <div class="topnav">
+		<a href="index.html">Home</a>
+        <a href="biodata.html">Biodata</a>
+        <a href="education.html">Education</a>
+        <a class="active" href="gallery.html">Gallery</a>
+		<a href="skills.html">Skills</a>
+		<a href="contact.html">Contact</a>
+	  </div>
+
+<br>
+
+<div class="datetime">
+    <div class="date">
+      <span id="dayname">Day</span>,
+      <span id="month">Month</span>
+      <span id="daynum">00</span>,
+      <span id="year">Year</span>
+    </div>
+    <div class="time">
+      <span id="hour">00</span>:
+      <span id="minutes">00</span>:
+      <span id="seconds">00</span>
+      <span id="period">AM</span>
+    </div>
+  </div>
+  <!--digital clock end-->
+
+  <script type="text/javascript">
+  function updateClock(){
+    var now = new Date();
+    var dname = now.getDay(),
+        mo = now.getMonth(),
+        dnum = now.getDate(),
+        yr = now.getFullYear(),
+        hou = now.getHours(),
+        min = now.getMinutes(),
+        sec = now.getSeconds(),
+        pe = "AM";
+
+        if(hou >= 12){
+          pe = "PM";
+        }
+        if(hou == 0){
+          hou = 12;
+        }
+        if(hou > 12){
+          hou = hou - 12;
+        }
+
+        Number.prototype.pad = function(digits){
+          for(var n = this.toString(); n.length < digits; n = 0 + n);
+          return n;
+        }
+
+        var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+        var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+        var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+        for(var i = 0; i < ids.length; i++)
+        document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+  }
+
+  function initClock(){
+    updateClock();
+    window.setInterval("updateClock()", 1);
+  }
+  </script>
+
+<br>
+<caption><b><center>MY FAMILY PHOTOS</center></b></caption>
+<br>
+<table class="center">
+    <tr>
+<td>
+    <a href="images/family 1.jpg" target="_blank"> <img src="images/family 1.jpg" width="200px" alt="Family Picture 1"> </a>
+</td>
+<td>
+    <a href="images/family 2.jpg" target="_blank"> <img src="images/family 2.jpg" width="200px"  alt="Akhmal with Mama"> </a>
+</td>
+<td>
+    <a href="images/family 3.jpg" target="_blank"> <img src="images/family 3.jpg" width="200px" alt="Family Raya Picture"> </a>
+</td>
+<td>
+    <a href="images/family 4.jpg" target="_blank"> <img src="images/family 4.jpg" width="200px" alt="Family Picture 2"> </a>
+</td>
+<td>
+    <a href="images/family 5.jpg" target="_blank"> <img src="images/family 5.jpg" width="200px" alt="Family Picture 3"> </a>
+</td>
+    </tr>
+</table>
+
+<br>
+<caption><b><center>ME & MY FRIENDS PHOTOS</center></b></caption>
+<br>
+<table class="center">
+    <tr>
+<td>
+    <a href="images/friends 1.jpg" target="_blank"> <img src="images/friends 1.jpg" width="200px" alt="Friends Picture 1"> </a>
+</td>
+<td>
+    <a href="images/friends 2.jpg" target="_blank"> <img src="images/friends 2.jpg" width="200px"  alt="Friends Picture 2"> </a>
+</td>
+<td>
+    <a href="images/friends 3.jpg" target="_blank"> <img src="images/friends 3.jpg" width="200px" alt="Me with Badrul and Azim"> </a>
+</td>
+<td>
+    <a href="images/friends 4.jpg" target="_blank"> <img src="images/friends 4.jpg" width="200px" alt="Me with Fikri"> </a>
+</td>
+<td>
+    <a href="images/friends 5.jpg" target="_blank"> <img src="images/friends 5.jpg" width="200px" alt="Friends Picture 3"> </a>
+</td>
+    </tr>
+</table>
+
+<br>
+<caption><b><center>RANDOM VIDEOS</center></b></caption>
+<br>
+<table class="center">
+    <tr>
+<td>
+    <video width="150" height="200" controls>
+        <source src="video/video1.mp4" type="video/mp4">
+      </video>
+</td>
+<td>
+    <video width="150" height="200" controls>
+        <source src="video/video2.mp4" type="video/mp4">
+      </video>
+</td>
+<td>
+    <video width="150" height="200" controls>
+        <source src="video/video3.mp4" type="video/mp4">
+      </video>
+</td>
+<td>
+    <video width="150" height="200" controls>
+        <source src="video/video4.mp4" type="video/mp4">
+      </video>
+</td>
+<td>
+    <video width="150" height="200" controls>
+        <source src="video/video5.mp4" type="video/mp4">
+      </video>
+</td>
+</table>
+
+<br>
+<a href="gallery.html"><img src="images/back-to-top-icon.jpg" width="80px" class="back-to-top"></a>
+<br>
+    </body>
+</html>
